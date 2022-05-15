@@ -24,7 +24,7 @@ const login = async (req, res, next) => {
     console.log({ email, password });
     if (!email || !password) throw { name: "Bad Request Login" };
     const user = await User.findOne({ where: { email } });
-    console.log(password, user.password);
+    console.log({user});
     if (!user) throw { name: "Invalid Email" };
     if (!comparePassword(password, user.password))
       throw { name: "Invalid Password" };
@@ -33,7 +33,7 @@ const login = async (req, res, next) => {
       role: user.role,
     };
     const token = sign(payload);
-    res.status(201).json({ access_token: token });
+    res.status(200).json({ access_token: token });
   } catch (err) {
     next(err);
   }

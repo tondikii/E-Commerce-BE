@@ -1,5 +1,8 @@
 const router = require("express").Router();
 const userRouter = require("./user");
-router.use("/api/users", userRouter);
+const productRouter = require("./product");
+const multer = require("../middlewares/multer")
+router.use("/users", userRouter);
+router.use("/products", multer, productRouter);
 
 module.exports = router

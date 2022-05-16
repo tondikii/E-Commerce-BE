@@ -11,7 +11,7 @@ app.use(express.urlencoded({ extended: true }));
 
 // Routes
 const routes = require("./routes")
-app.use(routes)
+app.use("/api", routes)
 
 // Error Handler
 const errorHandler = require("./middlewares/errorHandler")

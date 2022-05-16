@@ -24,10 +24,11 @@ module.exports = (sequelize, DataTypes) => {
       },
       price: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
         validate: {
           notNull: { msg: "Price is required" },
           notEmpty: { msg: "Price cannot be empty" },
+          isNumeric: {msg: "Price should be number"},
         },
       },
       stock: {
@@ -35,6 +36,8 @@ module.exports = (sequelize, DataTypes) => {
         type: DataTypes.INTEGER,
         validate: {
           notNull: { msg: "Stock is required" },
+          notEmpty: { msg: "Price cannot be empty" },
+          isNumeric: {msg: "Stock should be number"},
         },
       },
       imageURL: {
@@ -48,7 +51,7 @@ module.exports = (sequelize, DataTypes) => {
       },
       description: {
         allowNull: false,
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
         validate: {
           notNull: { msg: "Description is required" },
           notEmpty: { msg: "Description cannot be empty" },
@@ -58,7 +61,9 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         type: DataTypes.INTEGER,
         validate: {
-          notNull: { msg: "CategoryId is required" },
+          notNull: { msg: "Category Id is required" },
+          notEmpty: { msg: "Category Id cannot be empty" },
+          isNumeric: {msg: "Category Id should be number"},
         },
       },
     },

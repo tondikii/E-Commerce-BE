@@ -33,7 +33,7 @@ const login = async (req, res, next) => {
       role: user.role,
     };
     const token = sign(payload);
-    res.status(200).json({ access_token: token });
+    res.status(200).json({ access_token: token, role: user.role });
   } catch (err) {
     next(err);
   }

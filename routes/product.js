@@ -1,9 +1,10 @@
 const router = require("express").Router();
-const {createProduct, getProducts, deleteProduct, updateProduct} = require("../controllers/product");
+const {createProduct, getProducts, getProductById, deleteProduct, updateProduct} = require("../controllers/product");
 const authentication = require("../middlewares/authentication");
 const authenticationAdmin = require("../middlewares/authenticationAdmin");
 
 router.get("/get", getProducts);
+router.get("/get/:ProductId", getProductById);
 
 // Middleware Authentication
 router.use(authentication);

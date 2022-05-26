@@ -77,6 +77,16 @@ const getProducts = async (req, res, next) => {
   }
 };
 
+const getProductById = async (req, res, next) => {
+  try {
+    const {ProductId: id} = req.params
+    const product = await Product.findByPk(id);
+    res.status(200).json(product);
+  } catch (err) {
+    next(err);
+  }
+};
+
 const updateProduct = async (req, res, next) => {
   try {
     const { ProductId } = req.params;
@@ -156,4 +166,4 @@ const deleteProduct = async (req, res, next) => {
   }
 };
 
-module.exports = { createProduct, getProducts, deleteProduct, updateProduct };
+module.exports = { createProduct, getProducts, getProductById, deleteProduct, updateProduct };

@@ -70,6 +70,7 @@ const getProducts = async (req, res, next) => {
       where,
       order: [["createdAt", "DESC"]]
     });
+    // console.log(products);
 
     res.status(200).json(products);
   } catch (err) {

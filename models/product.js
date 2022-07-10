@@ -31,15 +31,6 @@ module.exports = (sequelize, DataTypes) => {
           isNumeric: {msg: "Price should be number"},
         },
       },
-      stock: {
-        allowNull: false,
-        type: DataTypes.INTEGER,
-        validate: {
-          notNull: { msg: "Stock is required" },
-          notEmpty: { msg: "Price cannot be empty" },
-          isNumeric: {msg: "Stock should be number"},
-        },
-      },
       imageURL: {
         allowNull: false,
         type: DataTypes.STRING,

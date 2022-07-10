@@ -8,8 +8,8 @@ const createProduct = async (req, res, next) => {
   try {
     const file = req.file;
     if (!file) throw { name: "File not found" };
-    const { name, description, price, stock, CategoryId } = req.body;
-    console.log({ name, description, price, stock, CategoryId });
+    const { name, description, price, CategoryId } = req.body;
+    console.log({ name, description, price, CategoryId });
     const imagekit = new ImageKit({
       publicKey: public_key,
       privateKey: private_key,
@@ -31,7 +31,6 @@ const createProduct = async (req, res, next) => {
             description,
             imageURL: result.url,
             price,
-            stock,
             CategoryId,
           })
             .then((product) => {
@@ -94,8 +93,8 @@ const updateProduct = async (req, res, next) => {
     if (!(await Product.findByPk(ProductId)))
       throw { name: "Product not found" };
     const file = req.file;
-    const { name, description, price, stock, CategoryId, imageURL } = req.body;
-    console.log({ name, description, price, stock, CategoryId });
+    const { name, description, price, CategoryId, imageURL } = req.body;
+    console.log({ name, description, price, CategoryId });
     const imagekit = new ImageKit({
       publicKey: public_key,
       privateKey: private_key,
@@ -118,7 +117,6 @@ const updateProduct = async (req, res, next) => {
                 description,
                 imageURL: result.url,
                 price,
-                stock,
                 CategoryId,
               },
               { where: { id: ProductId }, returning: true, plain: true }
@@ -139,7 +137,6 @@ const updateProduct = async (req, res, next) => {
           description,
           imageURL: imageURL,
           price,
-          stock,
           CategoryId,
         },
         { where: { id: ProductId }, returning: true, plain: true }

@@ -21,9 +21,7 @@ var upload = multer({
 const execute = async (req, res, next) => {
   upload(req, res, function (err) {
     if (err instanceof multer.MulterError) {
-      console.log("Error File Size Multer");
       err.name = "Error File Size Multer";
-      console.log({err})
       next(err);
     } else if (err) {
       next(err);

@@ -1,5 +1,4 @@
 const errorHandler = (err, req, res, next) => {
-  console.log(err.name, "<<<<<<");
   switch (err.name) {
     case "SequelizeValidationError":
     case "SequelizeUniqueConstraintError":
@@ -26,6 +25,7 @@ const errorHandler = (err, req, res, next) => {
       res.status(401).json({ error: "Invalid signature" });
       break;
     case "Forbidden access":
+    case "JsonWebTokenError":
       res.status(403).json({ error: err.name });
       break;
     default:

@@ -21,10 +21,8 @@ const register = async (req, res, next) => {
 const login = async (req, res, next) => {
   try {
     const { email, password } = req.body;
-    console.log({ email, password });
     if (!email || !password) throw { name: "Bad Request Login" };
     const user = await User.findOne({ where: { email } });
-    console.log({ user });
     if (!user) throw { name: "Invalid Email" };
     if (!comparePassword(password, user.password))
       throw { name: "Invalid Password" };

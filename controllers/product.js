@@ -9,7 +9,6 @@ const createProduct = async (req, res, next) => {
     const file = req.file;
     if (!file) throw { name: "File not found" };
     const { name, description, price, CategoryId } = req.body;
-    console.log({ name, description, price, CategoryId });
     const imagekit = new ImageKit({
       publicKey: public_key,
       privateKey: private_key,
@@ -25,7 +24,6 @@ const createProduct = async (req, res, next) => {
           error.name = "Error ImageKit";
           next(error);
         } else {
-          // console.log({ imageURL: result.url });
           Product.create({
             name,
             description,
@@ -59,7 +57,6 @@ const getProducts = async (req, res, next) => {
     if (category) where.CategoryId = +category; // Query By Category
     if (search) where.name = { [Op.iLike]: `%${search}%` }; // Query Search
     
-    console.log({category, search, limit, page, offset, where})
     const products = await Product.findAndCountAll({
       limit,
       offset,
@@ -69,7 +66,6 @@ const getProducts = async (req, res, next) => {
       where,
       order: [["createdAt", "DESC"]]
     });
-    // console.log(products);
 
     res.status(200).json(products);
   } catch (err) {
@@ -94,7 +90,6 @@ const updateProduct = async (req, res, next) => {
       throw { name: "Product not found" };
     const file = req.file;
     const { name, description, price, CategoryId, imageURL } = req.body;
-    console.log({ name, description, price, CategoryId });
     const imagekit = new ImageKit({
       publicKey: public_key,
       privateKey: private_key,

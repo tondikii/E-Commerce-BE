@@ -21,13 +21,13 @@
   },
   "homepage": "https://github.com/tondikii/E-Commerce-BE#readme",
   "dependencies": {
-    "axios": "^0.27.2",
+    "axios": "^1.6.7",
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.18.1",
-    "imagekit": "^3.2.5",
-    "jsonwebtoken": "^8.5.1",
+    "imagekit": "^5.0.0",
+    "jsonwebtoken": "^9.0.2",
     "multer": "^1.4.4",
     "pg": "^8.7.3",
     "sequelize": "^6.19.0"

@@ -15,7 +15,7 @@ const routes = require("../routes")
 app.use("/.netlify/functions/api", routes)
 
 // Error Handler
-const errorHandler = require("./middlewares/errorHandler")
+const errorHandler = require("../middlewares/errorHandler")
 app.use(errorHandler)
 
 

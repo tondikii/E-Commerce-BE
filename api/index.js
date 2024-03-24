@@ -11,11 +11,11 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // Routes
-const routes = require("./routes")
+const routes = require("../routes")
 app.use("/", routes)
 
 // Error Handler
-const errorHandler = require("./middlewares/errorHandler")
+const errorHandler = require("../middlewares/errorHandler")
 app.use(errorHandler)
 
 
